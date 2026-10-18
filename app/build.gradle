@@ -1,0 +1,30 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.theplugos.local'
+    compileSdk 35
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
+    defaultConfig {
+        applicationId 'com.theplugos.local.pilot'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0-training'
+        testInstrumentationRunner 'android.test.InstrumentationTestRunner'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    testOptions { unitTests.includeAndroidResources = true }
+}
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.14.1'
+}
+tasks.withType(Test).configureEach {
+    // Conscrypt in Robolectric needs reflective socket access on JDK 17.
+    jvmArgs '--add-opens=java.base/java.net=ALL-UNNAMED'
+    systemProperty 'http.nonProxyHosts', 'localhost|127.*'
+    systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+    ['http.proxyHost','http.proxyPort','https.proxyHost','https.proxyPort'].each { key ->
+        if (System.getProperty(key)) systemProperty key, System.getProperty(key)
+    }
+}

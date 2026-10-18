@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="com.theplugos.local.LedgerTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2026-10-18T19:53:43" time="35.293">
+  <properties />
+  <testcase name="readyRemainsVisibleAcrossRestartsWithoutAlertDelivery" classname="com.theplugos.local.LedgerTest" time="4.164" />
+  <testcase name="preparedOrderCannotBeReturnedToStockThroughPilotCancellation" classname="com.theplugos.local.LedgerTest" time="1.172" />
+  <testcase name="expiredSessionsCannotOperateAndBranchHasNoKitchenConnectionUntilPoll" classname="com.theplugos.local.LedgerTest" time="1.16" />
+  <testcase name="kitchenCannotSubmitAndCashierCannotPrepare" classname="com.theplugos.local.LedgerTest" time="1.146" />
+  <testcase name="fullOfflineLoopSeparatesDeliveryAcknowledgementAndCollection" classname="com.theplugos.local.LedgerTest" time="1.122" />
+  <testcase name="sameOrderIdDifferentCommandIsRejected" classname="com.theplugos.local.LedgerTest" time="1.193" />
+  <testcase name="revokedDeviceAndOtherDeviceSessionRejected" classname="com.theplugos.local.LedgerTest" time="1.134" />
+  <testcase name="duplicateKitchenDeliveryReceiptsAreHarmless" classname="com.theplugos.local.LedgerTest" time="1.234" />
+  <testcase name="unknownProductAndClientPricesCannotChangeHubTotal" classname="com.theplugos.local.LedgerTest" time="1.211" />
+  <testcase name="allEffectsRollbackWhenReceiptCommitFails" classname="com.theplugos.local.LedgerTest" time="1.204" />
+  <testcase name="sameCommandIdWithChangedPayloadIsRejected" classname="com.theplugos.local.LedgerTest" time="1.184" />
+  <testcase name="acceptedOrderSurvivesDatabaseReopenAndRetry" classname="com.theplugos.local.LedgerTest" time="1.162" />
+  <testcase name="authenticatedEncryptionRejectsModifiedCiphertext" classname="com.theplugos.local.LedgerTest" time="1.229" />
+  <testcase name="humanAckRetryDoesNotRepeatAnEffect" classname="com.theplugos.local.LedgerTest" time="1.194" />
+  <testcase name="lostSubmitReplyRepeatedTwentyTimesProducesOneOrderAndOneEffect" classname="com.theplugos.local.LedgerTest" time="1.126" />
+  <testcase name="cancelRequiresManagerReasonAndNeverErasesHistory" classname="com.theplugos.local.LedgerTest" time="1.142" />
+  <testcase name="noPreparingBeforeHumanAckOrAckBeforeDurableDelivery" classname="com.theplugos.local.LedgerTest" time="1.152" />
+  <testcase name="noReadyToCollectedShortcut" classname="com.theplugos.local.LedgerTest" time="1.179" />
+  <testcase name="interruptedAtomicFileRenameRecoversPendingInsteadOfResetting" classname="com.theplugos.local.LedgerTest" time="1.16" />
+  <testcase name="sensitiveOrderAndReceiptsEncryptedAtRest" classname="com.theplugos.local.LedgerTest" time="1.119" />
+  <testcase name="separateBranchDoesNotAcceptAnotherBranchDeviceOrReadItsOrders" classname="com.theplugos.local.LedgerTest" time="1.872" />
+  <testcase name="staleVersionCannotSkipCurrentWork" classname="com.theplugos.local.LedgerTest" time="1.181" />
+  <testcase name="pinLockSurvivesReopen" classname="com.theplugos.local.LedgerTest" time="2.22" />
+  <testcase name="concurrentRequestsStillHaveSingleReceipt" classname="com.theplugos.local.LedgerTest" time="1.291" />
+  <testcase name="enrollmentCodeSingleUseAndExpiry" classname="com.theplugos.local.LedgerTest" time="1.173" />
+  <testcase name="clientDraftAndStablePendingSurviveAtomicStateReopen" classname="com.theplugos.local.LedgerTest" time="1.166" />
+  <system-out />
+  <system-err />
+</testsuite>

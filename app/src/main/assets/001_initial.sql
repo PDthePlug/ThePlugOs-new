@@ -1,0 +1,12 @@
+CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE devices (id TEXT PRIMARY KEY, token_hash TEXT NOT NULL UNIQUE, role TEXT NOT NULL CHECK(role IN ('cashier','kitchen','manager')), revoked INTEGER NOT NULL DEFAULT 0, last_seen INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE staff (id TEXT PRIMARY KEY, role TEXT NOT NULL, secret TEXT NOT NULL, failures INTEGER NOT NULL DEFAULT 0, locked_until INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, device_id TEXT NOT NULL REFERENCES devices(id), staff_id TEXT NOT NULL REFERENCES staff(id), expires INTEGER NOT NULL);
+CREATE TABLE pair_codes (hash TEXT PRIMARY KEY, role TEXT NOT NULL, expires INTEGER NOT NULL);
+CREATE TABLE orders (id TEXT PRIMARY KEY, number INTEGER NOT NULL UNIQUE, version INTEGER NOT NULL, state TEXT NOT NULL CHECK(state IN ('Received','Preparing','Ready','Collected','Cancelled')), payload TEXT NOT NULL, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL);
+CREATE TABLE deliveries (order_id TEXT NOT NULL REFERENCES orders(id), device_id TEXT NOT NULL REFERENCES devices(id), delivered_at INTEGER NOT NULL, PRIMARY KEY(order_id,device_id));
+CREATE TABLE events (sequence INTEGER PRIMARY KEY AUTOINCREMENT, id TEXT NOT NULL UNIQUE, order_id TEXT REFERENCES orders(id), payload TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE TABLE outbox (event_id TEXT PRIMARY KEY REFERENCES events(id), state TEXT NOT NULL DEFAULT 'pending', attempts INTEGER NOT NULL DEFAULT 0, next_attempt INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE receipts (id TEXT PRIMARY KEY, device_id TEXT NOT NULL, staff_id TEXT NOT NULL, request_hash TEXT NOT NULL, result TEXT NOT NULL);
+CREATE INDEX orders_state ON orders(state,created_at);
+CREATE INDEX devices_seen ON devices(role,last_seen);
