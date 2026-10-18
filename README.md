@@ -22,3 +22,8 @@ JDK 17 and Android SDK 35. Set `ANDROID_HOME` or ignored `local.properties`.
 ```
 
 Install debug APK on two separate Android API 26+ devices, initialize **one** training hub, enroll kitchen through its full certificate fingerprint and one-time code, and follow the operating guide. Milestone 1 is not accepted until physical devices pass the internet-disconnected order loop. Supabase sync, owner portal, payment ledger, stock, recipes, shift cash reconciliation and portable backup are later milestones. No real financial totals or fake live owner metrics are shown.
+
+## Vercel web deployment
+The repository also serves a static pilot download and setup page. Vercel runs `node scripts/build-web.mjs` and publishes only `web-dist/`. The build verifies the APK against `web/release.json` before copying the Android download and operating documents. No cloud credentials or environment variables are required.
+
+This web page does not run the Android hub, perform transactions, or provide the Milestone 3 owner dashboard. Native application changes require a new verified APK and release manifest; a web deployment does not rebuild or physically certify Android.

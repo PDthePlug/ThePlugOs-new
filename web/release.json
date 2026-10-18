@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0-training",
+  "artifact": "ThePlugOS-0.1.0-training.apk",
+  "sha256": "48f308343c28467e7d3644b1058685342b2fd1659cc8a18ad7d68334a96fbb39",
+  "sourceCommit": "37b7ebbc8c223776ff470fb3164e55caaa1510ff",
+  "verifiedDate": "18 October 2026",
+  "automatedTests": 30,
+  "physicalDeviceAcceptance": "pending"
+}
